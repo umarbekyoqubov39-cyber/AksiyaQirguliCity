@@ -123,12 +123,11 @@ img, svg { display: block; }
 .frame {
   position: absolute;
   inset: 30% 0 0 0;
-  border: 2px solid var(--gold);
   border-radius: 18px;
   background:
     radial-gradient(120% 90% at 50% 30%, rgba(30, 110, 80, .55), transparent 70%),
     linear-gradient(160deg, rgba(11, 61, 46, .95), rgba(7, 38, 28, .95));
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .4), inset 0 0 0 1px rgba(255, 255, 255, .05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .4);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -162,20 +161,21 @@ img, svg { display: block; }
 }
 
 /* Katta aksiya */
+.head { flex: none; display: flex; flex-direction: column; gap: clamp(4px, calc(.8 * var(--vh)), 10px); text-align: center; }
 .side { flex: none; display: flex; flex-direction: column; gap: clamp(6px, calc(1.3 * var(--vh)), 14px); text-align: center; }
 .big {
   font-weight: 900;
   line-height: .95;
   letter-spacing: .01em;
   color: var(--gold);
-  font-size: clamp(34px, min(12.2vw, calc(7 * var(--vh))), 76px);
+  font-size: clamp(40px, min(14vw, calc(8 * var(--vh))), 84px);
   text-shadow: 0 2px 0 var(--gold2), 0 4px 0 #8a6210, 0 6px 0 #5e420a, 0 10px 18px rgba(0, 0, 0, .55);
 }
 .sub {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: .02em;
-  font-size: clamp(11px, min(3.5vw, calc(1.9 * var(--vh))), 16px);
+  font-size: clamp(13px, min(4.3vw, calc(2.3 * var(--vh))), 19px);
   margin-top: -2px;
 }
 
@@ -189,7 +189,6 @@ img, svg { display: block; }
   gap: 4px;
   padding: clamp(6px, calc(1.1 * var(--vh)), 12px) 10px;
   border-radius: 14px;
-  border: 1.5px solid var(--gold);
   background: linear-gradient(135deg, rgba(7, 38, 28, .92), rgba(11, 61, 46, .88));
   min-width: 0;
 }
@@ -207,6 +206,39 @@ img, svg { display: block; }
 }
 .ic svg + svg { margin-left: -3px; }
 .ic .kaaba { width: clamp(18px, min(5.4vw, calc(2.8 * var(--vh))), 28px); stroke: var(--gold); }
+
+/* Sana va jonli efir */
+.info { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.inf {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: clamp(6px, calc(1 * var(--vh)), 11px) 8px;
+  border-radius: 14px;
+  min-width: 0;
+  text-align: left;
+  line-height: 1.1;
+}
+.inf b { display: block; white-space: nowrap; font-weight: 900; font-size: clamp(13px, min(4.2vw, calc(2.2 * var(--vh))), 19px); }
+.inf span { display: block; white-space: nowrap; font-weight: 700; font-size: clamp(10px, min(3vw, calc(1.55 * var(--vh))), 13px); }
+.date { background: linear-gradient(135deg, rgba(7, 38, 28, .92), rgba(11, 61, 46, .88)); }
+.date span { color: var(--gold); }
+.live { background: #fff; color: #14231d; }
+.live span { color: var(--red); }
+.cal { flex: none; width: clamp(20px, min(6vw, calc(3 * var(--vh))), 30px); height: auto; }
+.dot {
+  flex: none;
+  width: clamp(14px, min(4.2vw, calc(2.1 * var(--vh))), 20px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ff6b5e, var(--red) 60%, #a5130c);
+  animation: live 1.4s ease-out infinite;
+}
+@keyframes live {
+  0% { box-shadow: 0 0 0 0 rgba(226, 35, 26, .55); }
+  100% { box-shadow: 0 0 0 9px rgba(226, 35, 26, 0); }
+}
 
 /* Tugma */
 .btn {
@@ -243,7 +275,7 @@ img, svg { display: block; }
 @keyframes pulse { 50% { transform: scale(1.025); } }
 @keyframes shine { 60%, 100% { transform: translateX(320%); } }
 
-.note { font-size: 10px; opacity: .65; margin-top: -4px; }
+.note { font-size: clamp(12px, min(3.4vw, calc(1.7 * var(--vh))), 14px); font-weight: 500; opacity: .85; margin-top: -2px; }
 
 /* ---------- Planshet ---------- */
 @media (min-width: 600px) {
@@ -261,39 +293,66 @@ img, svg { display: block; }
     max-width: 1240px;
     display: grid;
     grid-template-columns: 1.15fr 1fr;
+    grid-template-areas: 'head head' 'car side';
+    grid-template-rows: auto auto;
+    align-content: center;
+    row-gap: clamp(16px, calc(3 * var(--vh)), 36px);
     align-items: center;
     gap: clamp(28px, 4vw, 60px);
   }
   .main { --cap: clamp(60px, calc(9 * var(--vh)), 90px); }
-  .car { height: min(66 * var(--vh), 40vw); margin: 0; }
+  .head { grid-area: head; }
+  .car { grid-area: car; height: min(56 * var(--vh), 40vw); margin: 0; }
+  .side { grid-area: side; }
   .onix { left: -5%; width: 110%; }
   .frame { top: 44%; }
   .pz { flex-direction: row; text-align: left; gap: 10px; justify-content: flex-start; }
   .side { gap: clamp(10px, calc(2 * var(--vh)), 20px); }
-  .big { font-size: clamp(56px, min(8vw, calc(12 * var(--vh))), 120px); }
-  .big span { display: block; }
-  .sub { font-size: clamp(14px, calc(2.2 * var(--vh)), 20px); }
+  .big { font-size: clamp(54px, min(7.8vw, calc(10 * var(--vh))), 112px); }
+  .sub { font-size: clamp(16px, calc(2.7 * var(--vh)), 24px); }
   .pz b { font-size: clamp(16px, calc(2.6 * var(--vh)), 24px); }
   .pz span { font-size: clamp(12px, calc(1.8 * var(--vh)), 16px); }
+  .inf { gap: 12px; padding: clamp(8px, calc(1.3 * var(--vh)), 14px) 12px; }
+  .inf b { font-size: clamp(16px, calc(2.6 * var(--vh)), 24px); }
+  .inf span { font-size: clamp(12px, calc(1.8 * var(--vh)), 16px); }
+  .cal { width: clamp(26px, calc(4 * var(--vh)), 38px); }
+  .dot { width: clamp(16px, calc(2.4 * var(--vh)), 24px); }
   .ic svg { width: clamp(22px, calc(3.2 * var(--vh)), 32px); }
   .ic .kaaba { width: clamp(30px, calc(4.4 * var(--vh)), 44px); }
   .pz b { white-space: normal; }
   .btn { min-height: clamp(54px, calc(8 * var(--vh)), 68px); font-size: clamp(16px, calc(2.4 * var(--vh)), 21px); }
-  .note { font-size: 12px; }
+  .note { font-size: clamp(13px, calc(1.9 * var(--vh)), 16px); }
+}
+
+/* Kichik telefonlar (masalan, iPhone SE 1) */
+@media (max-width: 599px) and (max-height: 620px) {
+  .main { gap: 5px; }
+  .big { font-size: clamp(32px, calc(7 * var(--vh)), 44px); }
+  .sub { font-size: 12px; }
+  .side { gap: 6px; }
+  .inf, .pz { padding-top: 5px; padding-bottom: 5px; }
+  .btn { min-height: 44px; }
+  .note { font-size: 11px; }
 }
 
 /* Telefon gorizontal holatda: ikki ustun, ixcham */
 @media (max-height: 520px) and (orientation: landscape) {
   .page { padding: 8px 16px; }
   .top { height: 40px; justify-content: flex-start; }
-  .main { max-width: none; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 24px; }
-  .car { height: calc(72 * var(--vh)); margin: 0; }
+  .main { max-width: none; display: grid; grid-template-columns: 1fr 1fr; grid-template-areas: 'head head' 'car side'; grid-template-rows: auto auto; align-content: space-evenly; align-items: center; gap: 6px 24px; }
+  .head { grid-area: head; gap: 2px; }
+  .car { grid-area: car; height: calc(58 * var(--vh)); margin: 0; }
+  .side { grid-area: side; }
   .main { --cap: 44px; }
-  .big { font-size: clamp(30px, calc(11 * var(--vh)), 56px); }
+  .big { font-size: clamp(28px, calc(9 * var(--vh)), 50px); }
+  .sub { font-size: clamp(12px, calc(3.2 * var(--vh)), 16px); }
+  .note { font-size: 11px; }
   .side { gap: 6px; }
   .btn { min-height: 44px; }
+  .info, .prizes { gap: 6px; }
+  .inf, .pz { padding: 4px 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn, .btn::after, .timer.hot { animation: none; }
+  .btn, .btn::after, .timer.hot, .dot { animation: none; }
 }

@@ -25,6 +25,14 @@ const Washer = () => (
     <circle cx="9" cy="7" r=".6" />
   </svg>
 )
+const Calendar = () => (
+  <svg viewBox="0 0 32 32" aria-hidden="true" className="cal">
+    <rect x="4" y="6" width="24" height="22" rx="3" fill="#fff" />
+    <path d="M4 9a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v4H4z" fill="#e2231a" />
+    <path d="M10 3v6M22 3v6" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" />
+    <path d="M9 18h3M15 18h3M21 18h2M9 23h3M15 23h3" stroke="#0b3d2e" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+)
 const Kaaba = () => (
   <svg viewBox="0 0 32 32" aria-hidden="true" className="kaaba">
     <path d="M5 9l11-4 11 4v16l-11 4-11-4z" fill="#111" stroke="none" />
@@ -42,6 +50,13 @@ export default function App() {
       </header>
 
       <main className="main">
+        <div className="head">
+          <h1 className="big">
+            <span>KATTA</span> <span>AKSIYA</span>
+          </h1>
+          <p className="sub">Uy oling va katta sovrinlarga ega bo‘ling!</p>
+        </div>
+
         <section className="car" aria-label="Bosh sovrin">
           <div className="frame">
             <p className="cap">
@@ -62,11 +77,6 @@ export default function App() {
         </section>
 
         <div className="side">
-          <h1 className="big">
-            <span>KATTA</span> <span>AKSIYA</span>
-          </h1>
-          <p className="sub">Uy oling va katta sovrinlarga ega bo‘ling!</p>
-
           <div className="prizes">
             <div className="pz">
               <i className="ic">
@@ -86,6 +96,23 @@ export default function App() {
               <div>
                 <b>2 TA</b>
                 <span>Umra safariga yo‘llanma</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="info">
+            <div className="inf date">
+              <Calendar />
+              <div>
+                <b>20-OKTABR</b>
+                <span>SOAT 20:00 DA</span>
+              </div>
+            </div>
+            <div className="inf live">
+              <i className="dot" aria-hidden="true" />
+              <div>
+                <b>JONLI EFIR</b>
+                <span>onlayn taqdimot</span>
               </div>
             </div>
           </div>
