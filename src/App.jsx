@@ -54,7 +54,7 @@ export default function App() {
           <h1 className="big">
             <span>KATTA</span> <span>AKSIYA</span>
           </h1>
-          <p className="sub">Uy oling va katta sovrinlarga ega bo‘ling!</p>
+          <p className="sub"> HONADON VA BEPUL SOVG'ALARGA EGA  BO'LING!</p>
         </div>
 
         <section className="car" aria-label="Bosh sovrin">
